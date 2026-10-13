@@ -1,4 +1,4 @@
-/* Ypografi - Christos S Magides - 2026 */
+/* Ypografi - Christos S Magides - 2026 - έκδοση 13-10-2026 (δίγλωσση / bilingual) */
 (function () {
   if (window.__ypografiCSM) return;
   window.__ypografiCSM = true;
@@ -39,10 +39,13 @@
 
     var f = document.createElement("footer");
     f.id = "ypografi-csm";
+    f.setAttribute("translate", "no");
+    f.setAttribute("data-no-translate", "1");
+    f.className = "notranslate";
 
     var l = document.createElement("span");
     l.className = "yp-l";
-    l.textContent = "Δημιουργία";
+    l.textContent = "Δημιουργία · Created by";
 
     var o = document.createElement("span");
     o.className = "yp-o";
