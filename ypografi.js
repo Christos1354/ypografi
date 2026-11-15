@@ -1,10 +1,45 @@
-/* Ypografi - Christos S Magides - 2026 - έκδοση 15-11-2026 (χωρίς email / no email) */
+/* Ypografi - Christos S Magides - 2026 - έκδοση 15-11-2026 («✏️ Γράψε μου» αντί για διεύθυνση) */
 (function () {
   if (window.__ypografiCSM) return;
   window.__ypografiCSM = true;
 
   var onoma = "Christos S Magides";
   var etos = "2026";
+
+  /* [κουμπί, θέμα μηνύματος, αρχή μηνύματος] */
+  var L = {
+    el: ["Γράψε μου", "Μήνυμα από", "Γεια σας κύριε Χρίστο,\n\nΣας γράφω για"],
+    en: ["Write to me", "Message from", "Hello Mr Christos,\n\nI am writing to you about"],
+    de: ["Schreiben Sie mir", "Nachricht von", "Guten Tag Herr Christos,\n\nich schreibe Ihnen wegen"],
+    fr: ["Écrivez-moi", "Message de", "Bonjour M. Christos,\n\nJe vous écris au sujet de"],
+    es: ["Escríbame", "Mensaje desde", "Hola Sr. Christos,\n\nLe escribo sobre"],
+    it: ["Scrivimi", "Messaggio da", "Buongiorno Sig. Christos,\n\nLe scrivo riguardo a"],
+    ru: ["Напишите мне", "Сообщение из", "Здравствуйте, господин Христос!\n\nПишу вам по поводу"],
+    ar: ["راسلني", "رسالة من", "مرحباً سيد خريستوس،\n\nأكتب إليك بخصوص"],
+    tr: ["Bana yazın", "Mesaj", "Merhaba Bay Christos,\n\nSize şu konuda yazıyorum:"]
+  };
+
+  function glossa() {
+    var l = (document.documentElement.lang || navigator.language || "el").slice(0, 2).toLowerCase();
+    return L[l] ? l : "en";
+  }
+
+  function grapse(e) {
+    if (e) e.preventDefault();
+    var t = L[glossa()];
+    var n = document.title || location.hostname;
+    var pros = ["cyp", "11111"].join("") + "@" + ["gmail", "com"].join(".");
+    location.href = "mailto:" + pros +
+      "?subject=" + encodeURIComponent(t[1] + ": " + n) +
+      "&body=" + encodeURIComponent(t[2] + " «" + n + "».\n\n");
+  }
+
+  function vapse() {
+    var a = document.getElementById("ypografi-grapse");
+    if (!a) return;
+    var t = "✏️ " + L[glossa()][0];
+    if (a.textContent !== t) a.textContent = t;
+  }
 
   function valeMeta() {
     try {
@@ -26,8 +61,8 @@
       "padding:10px 12px 14px;background:transparent;border:0;text-align:center;clear:both;" +
       "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;" +
       "font-size:12px;line-height:1.5;color:#8a8a8a;opacity:.85}" +
-      "#ypografi-csm a{font:inherit;color:inherit;text-decoration:none}" +
-      "#ypografi-csm a:hover{text-decoration:underline}";
+      "#ypografi-csm a{font:inherit;font-size:14px;color:inherit;text-decoration:underline;cursor:pointer;" +
+      "display:inline-block;padding:6px 4px}";
     document.head.appendChild(css);
 
     var f = document.createElement("footer");
@@ -36,8 +71,18 @@
     f.setAttribute("data-no-translate", "1");
     f.className = "notranslate";
 
-    f.appendChild(document.createTextNode("\u00A9 " + etos + " " + onoma));
+    var a = document.createElement("a");
+    a.id = "ypografi-grapse";
+    a.href = "#";
+    a.addEventListener("click", grapse);
+
+    f.appendChild(document.createTextNode("© " + etos + " " + onoma + " · "));
+    f.appendChild(a);
     document.body.appendChild(f);
+    vapse();
+    try {
+      new MutationObserver(vapse).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+    } catch (e) {}
   }
 
   function ksekina() {
