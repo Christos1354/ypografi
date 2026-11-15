@@ -1,12 +1,9 @@
-/* Ypografi - Christos S Magides - 2026 - έκδοση 2-11-2026 (διακριτική / discreet) */
+/* Ypografi - Christos S Magides - 2026 - έκδοση 15-11-2026 (χωρίς email / no email) */
 (function () {
   if (window.__ypografiCSM) return;
   window.__ypografiCSM = true;
 
   var onoma = "Christos S Magides";
-  var u = ["cyp", "11111"].join("");
-  var d = ["gmail", "com"].join(".");
-  var mail = u + "@" + d;
   var etos = "2026";
 
   function valeMeta() {
@@ -39,12 +36,7 @@
     f.setAttribute("data-no-translate", "1");
     f.className = "notranslate";
 
-    var a = document.createElement("a");
-    a.href = "mailto:" + mail;
-    a.textContent = mail;
-
-    f.appendChild(document.createTextNode("\u00A9 " + etos + " " + onoma + " \u00B7 "));
-    f.appendChild(a);
+    f.appendChild(document.createTextNode("\u00A9 " + etos + " " + onoma));
     document.body.appendChild(f);
   }
 
