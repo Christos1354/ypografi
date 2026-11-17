@@ -1,4 +1,4 @@
-/* Ypografi - Christos S Magides - 2026 - έκδοση 15-11-2026 («✏️ Γράψε μου» αντί για διεύθυνση) */
+/* Ypografi - Christos S Magides - 2026 - έκδοση 16-11-2026 («✏️ Γράψε μου» αντί για διεύθυνση) */
 (function () {
   if (window.__ypografiCSM) return;
   window.__ypografiCSM = true;
@@ -8,15 +8,15 @@
 
   /* [κουμπί, θέμα μηνύματος, αρχή μηνύματος] */
   var L = {
-    el: ["Γράψε μου", "Μήνυμα από", "Γεια σας κύριε Χρίστο,\n\nΣας γράφω για"],
-    en: ["Write to me", "Message from", "Hello Mr Christos,\n\nI am writing to you about"],
-    de: ["Schreiben Sie mir", "Nachricht von", "Guten Tag Herr Christos,\n\nich schreibe Ihnen wegen"],
-    fr: ["Écrivez-moi", "Message de", "Bonjour M. Christos,\n\nJe vous écris au sujet de"],
-    es: ["Escríbame", "Mensaje desde", "Hola Sr. Christos,\n\nLe escribo sobre"],
-    it: ["Scrivimi", "Messaggio da", "Buongiorno Sig. Christos,\n\nLe scrivo riguardo a"],
-    ru: ["Напишите мне", "Сообщение из", "Здравствуйте, господин Христос!\n\nПишу вам по поводу"],
-    ar: ["راسلني", "رسالة من", "مرحباً سيد خريستوس،\n\nأكتب إليك بخصوص"],
-    tr: ["Bana yazın", "Mesaj", "Merhaba Bay Christos,\n\nSize şu konuda yazıyorum:"]
+    el: ["Γράψε μου", "Μήνυμα από", "Γεια σας κύριε Χρίστο,"],
+    en: ["Write to me", "Message from", "Hello Mr Christos,"],
+    de: ["Schreiben Sie mir", "Nachricht von", "Guten Tag Herr Christos,"],
+    fr: ["Écrivez-moi", "Message de", "Bonjour M. Christos,"],
+    es: ["Escríbame", "Mensaje desde", "Hola Sr. Christos,"],
+    it: ["Scrivimi", "Messaggio da", "Buongiorno Sig. Christos,"],
+    ru: ["Напишите мне", "Сообщение из", "Здравствуйте, господин Христос!"],
+    ar: ["راسلني", "رسالة من", "مرحباً سيد خريستوس،"],
+    tr: ["Bana yazın", "Mesaj", "Merhaba Bay Christos,"]
   };
 
   function glossa() {
@@ -31,7 +31,7 @@
     var pros = ["cyp", "11111"].join("") + "@" + ["gmail", "com"].join(".");
     location.href = "mailto:" + pros +
       "?subject=" + encodeURIComponent(t[1] + ": " + n) +
-      "&body=" + encodeURIComponent(t[2] + " «" + n + "».\n\n");
+      "&body=" + encodeURIComponent(t[2] + "\n\n");
   }
 
   function vapse() {
