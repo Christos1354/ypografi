@@ -1,6 +1,6 @@
 #!/bin/bash
 # =====================================================================
-#  Ενημέρωση MyApps — Christos S Magides — έκδοση 19-11-2026
+#  Ενημέρωση MyApps — Christos S Magides — έκδοση 19-11-2026 (β)
 #  Παίρνει από το GitHub ΜΟΝΟ ό,τι άλλαξε και ενημερώνει τους φακέλους
 #  μέσα στο ~/Desktop/MyApps. Δεν σβήνει ποτέ τίποτα: αν ένας φάκελος
 #  έχει δικές σου αλλαγές, πρώτα τον αντιγράφει στα «ΠΑΛΙΑ ΑΡΧΕΙΑ».
@@ -62,8 +62,9 @@ for R in $REPOS; do
   fi
 
   if [ ! -d "$D/.git" ]; then
+    printf "⏳ κατεβαίνει, περίμενε…"
     if git clone -q --depth 1 "$URL" "$D" >/dev/null 2>&1; then
-      echo "${PRASINO}✓ κατέβηκε${TELOS}"; NEA="$NEA $R"
+      printf "\r   %-22s" "$R"; echo "${PRASINO}✓ κατέβηκε                ${TELOS}"; NEA="$NEA $R"
     else
       rm -rf "$D" 2>/dev/null
       if [ -n "$METAKINITHIKE" ]; then
