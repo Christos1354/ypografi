@@ -1,4 +1,4 @@
-/* Ypografi - Christos S Magides - 2026 - έκδοση 16-11-2026 («✏️ Γράψε μου» αντί για διεύθυνση) */
+/* Ypografi - Christos S Magides - 2026 - έκδοση 19-11-2026 (σύντομο θέμα: «Μήνυμα από» + όνομα εφαρμογής) */
 (function () {
   if (window.__ypografiCSM) return;
   window.__ypografiCSM = true;
@@ -16,7 +16,7 @@
     it: ["Scrivimi", "Messaggio da", "Buongiorno Sig. Christos,"],
     ru: ["Напишите мне", "Сообщение из", "Здравствуйте, господин Христос!"],
     ar: ["راسلني", "رسالة من", "مرحباً سيد خريستوس،"],
-    tr: ["Bana yazın", "Mesaj", "Merhaba Bay Christos,"]
+    tr: ["Bana yazın", "Mesaj:", "Merhaba Bay Christos,"]
   };
 
   function glossa() {
@@ -27,10 +27,10 @@
   function grapse(e) {
     if (e) e.preventDefault();
     var t = L[glossa()];
-    var n = document.title || location.hostname;
+    var n = (document.title || location.hostname).split(/\s+[·|–—-]\s+|:\s/)[0].trim();
     var pros = ["cyp", "11111"].join("") + "@" + ["gmail", "com"].join(".");
     location.href = "mailto:" + pros +
-      "?subject=" + encodeURIComponent(t[1] + ": " + n) +
+      "?subject=" + encodeURIComponent(t[1] + " " + n) +
       "&body=" + encodeURIComponent(t[2] + "\n\n");
   }
 
